@@ -167,7 +167,7 @@ class Vector3:
     def __len__(self):
         """ Gives the magnitude of vector
         """
-        return math.sqr(self.x*selfx + self.y*self.y + self.z*self.z)
+        return math.sqrt(self.x*self.x + self.y*self.y + self.z*self.z)
 
     def __add__(self, v):
         """ Addition of two vectors
@@ -205,9 +205,9 @@ class Vector3:
         """ Multiplication of vector by a number or dot product of vectors
             Operation: *
         """
-        if isinstance(v,int) or isinstance(v,float):
+        if isinstance(num,int) or isinstance(num,float):
             return Vector3(self.x * num, self.y * num, self.z * num)
-        elif isinstance(v,Vector3):
+        elif isinstance(num,Vector3):
             return self.x * v.x + self.y * v.y + self.z * v.z
         else:
             raise Exception('Expected number/float/vector3, gotted {}'.format(type(v)))
@@ -272,11 +272,11 @@ class Vector3:
         return self
     
     def __imul__(self, num):
-        """ Multiplication of vector by a number
+        """ Multiplication of vector by a number 
             Operation: *=
         """
         
-        if isinstance(v,int) or isinstance(v,float):
+        if isinstance(num,int) or isinstance(num,float):
             self.x *= num
             self.y *= num
             self.z *= num
@@ -324,7 +324,7 @@ class Vector3:
     def __abs__(self, v):
         """ Gives the magnitude of vector
         """ 
-        return math.sqr(self.x*selfx + self.y*self.y + self.z*self.z)
+        return math.sqrt(self.x*selfx + self.y*self.y + self.z*self.z)
     
     def __neg__(self):
         return Vector3(-self.x, -self.y, -self.z)
@@ -336,7 +336,7 @@ class Vector3:
         """
              Normalize vector
         """
-        inv_length = 1 / len(self)
+        inv_length = 1.0 / math.sqrt(self.x*self.x + self.y*self.y + self.z*self.z)
         self.x *= inv_length
         self.y *= inv_length
         self.z *= inv_length
@@ -359,7 +359,7 @@ class Vector3:
             dx = self.x - v.x
             dy = self.y - v.y
             dz = self.z - v.z
-            return math.sqr(dx*dx+dy*dy+dz*dz)
+            return math.sqrt(dx*dx+dy*dy+dz*dz)
         else:
             raise Exception('Expected Vector3, gotted {}'.format(type(v)))
-    
+   
