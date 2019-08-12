@@ -337,10 +337,10 @@ class Vector3:
              Normalize vector
         """
         inv_length = 1 / len(self)
-        self.x *= inv_length;
-	self.y *= inv_length;
-	self.z *= inv_length;
-	return self
+        self.x *= inv_length
+        self.y *= inv_length
+        self.z *= inv_length
+        return self
 
     def cross(self, v):
         """
